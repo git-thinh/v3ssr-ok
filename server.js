@@ -12,8 +12,7 @@ import {
 const server = express();
 
 server.get('/js-ssr/client.js', (req, res) => res.download(`${__dirname}/js-ssr/client.js`));
-server.get('/js-ssr/vue-3.2.34.esm-browser.prod.js', (req, res) => res.download(
-	`${__dirname}/js-ssr/vue-3.2.34.esm-browser.prod.js`));
+server.get('/js-ssr/vue-3.2.34.esm-browser.prod.js', (req, res) => res.download(`${__dirname}/js-ssr/vue-3.2.34.esm-browser.prod.js`));
 
 server.get('/', (req, res) => {
 	const app = createApp();
