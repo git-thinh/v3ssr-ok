@@ -18,9 +18,9 @@ server.get('/js-ssr/vue-3.2.34.esm-browser.prod.js', (req, res) => res.download(
 server.get('/', (req, res) => {
 	const app = createApp();
 
-	let js = '';
-	js = '<script type="importmap">{"imports":{"vue": "https://unpkg.com/vue@3.2.34/dist/vue.esm-browser.prod.js"}}</script>';
-	js = '<script type="importmap">{"imports":{"vue": "/js-ssr/vue-3.2.34.esm-browser.prod.js"}}</script>';
+	let js = '<style type="text/css">body{display: flex;min-height: 100vh;} #__vue{flex: 1 1 auto;}</style>';
+	//js += '<script type="importmap">{"imports":{"vue": "https://unpkg.com/vue@3.2.34/dist/vue.esm-browser.prod.js"}}</script>';
+	js += '<script type="importmap">{"imports":{"vue": "/js-ssr/vue-3.2.34.esm-browser.prod.js"}}</script>';
 
 	renderToString(app).then((html) => {
 		res.send(`
@@ -32,7 +32,7 @@ server.get('/', (req, res) => {
         <script type="module" src="/js-ssr/client.js"></script>
       </head>
       <body>
-        <div id="app">${html}</div>
+        <div id="__vue">${html}</div>
       </body>
     </html>
     `);
